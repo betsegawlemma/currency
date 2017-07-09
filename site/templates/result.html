@@ -1,0 +1,61 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Delivery Hero{% endblock %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/bootstrap.min.css')}}">
+{% endblock %}
+{% block navbar %}
+      <div class="container">
+        <div class="navbar-header">
+                   <p class="navbar-brand" href="#">Delivery Hero</p>
+        </div>
+       </div>
+{% endblock %}
+{% block content %}
+<div class="row">
+<div class="col-md-6">
+<div class="table-responsive">
+  <table class="table table-striped">
+<tr>
+<th scope="row">Base: {{ data.base }}</th>
+<th scope="row">Start Date: {{ data.start_date}}</td>
+<th scope="row">End Date: {{ data.end_date }}</td>
+</tr>
+  </table>
+</div>
+</div>
+
+</div>
+<div class="row">
+<div class="col-md-12">
+<div class="table-responsive">
+  <table class="table table-striped">
+ <thead>
+    <tr>
+      <th>Currency</th>
+      <th>Latest</th>
+      <th>Min</th>
+      <th>Avg</th>
+      <th>Max</th>
+    </tr>
+  </thead>
+{% for key in data.latest.keys() %}
+<tr>
+<th scope="row">{{ key }}</th>
+<td>{{ data.latest[key] }}</td>
+<td>{{ data.min[key] }}</td>
+<td>{{ data.avg[key] }}</td>
+<td>{{ data.max[key] }}</td>
+</tr>
+{% endfor %}
+  </table>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{url_for('.static', filename='js/jquery.js')}}"></script>
+<script src="{{url_for('.static', filename='js/bootstrap.min.js')}}"></script>
+{{super()}}
+{% endblock %}
