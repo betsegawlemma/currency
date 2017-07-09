@@ -1,3 +1,4 @@
-env/
+site/env/
+api/env/
 site/*.pyc
 api/*.pyc
